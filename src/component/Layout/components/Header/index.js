@@ -9,8 +9,6 @@ import {
     faKeyboard,
     faMagnifyingGlass,
     faSpinner,
-    faCloudArrowUp,
-    faMessage,
     faUser,
     faCoins,
     faGear,
@@ -23,9 +21,11 @@ import 'tippy.js/dist/tippy.css';
 import Button from '~/component/Button';
 import { Wrapper as PopperWrapper } from '~/component/Popper';
 import styles from './Header.module.scss';
-import images from '~/assets/image';
+import images from '~/assets/images';
 import AccountItem from '~/component/AccountItem';
 import Menu from '~/component/Popper/Menu';
+import { BoxMessageIcon, UploadIcon } from '~/component/Icons';
+import Image from '~/component/Image';
 
 const cx = classNames.bind(styles);
 
@@ -139,11 +139,11 @@ function Header() {
                         <>
                             <Tippy delay={[0, 200]} content="Upload Video" placement="bottom">
                                 <button className={cx('action-btn')}>
-                                    <FontAwesomeIcon icon={faCloudArrowUp} />
+                                    <UploadIcon />
                                 </button>
                             </Tippy>
                             <button className={cx('action-btn')}>
-                                <FontAwesomeIcon icon={faMessage} />
+                                <BoxMessageIcon />
                             </button>
                         </>
                     ) : (
@@ -152,12 +152,13 @@ function Header() {
                             <Button primary>Log in</Button>
                         </>
                     )}
-                    <Menu items={currentUser ? userMenu : userMenu} onChange={handleMenuChange}>
+                    <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
                         {currentUser ? (
-                            <img
+                            <Image
                                 className={cx('user-avata')}
                                 alt=""
                                 src="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/be22b8593ea95c8835d47f4b5309ec16~c5_100x100.jpeg?x-expires=1664935200&x-signature=t2H9Y%2BIro5YlN0LqgwVaGM1rdA4%3D"
+                                fallback="https://fullstack.edu.vn/static/media/f8-icon.18cd71cfcfa33566a22b.png"
                             />
                         ) : (
                             <button className={cx('more-btn')}>
